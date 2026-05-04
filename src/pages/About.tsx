@@ -25,10 +25,10 @@ const stats = [
 ];
 
 const values = [
-  { icon: Target, title: "Our Mission", desc: "To democratize access to opportunities for talented individuals regardless of their background, location, or financial status." },
-  { icon: Eye, title: "Our Vision", desc: "A world where every talented person can discover and access the opportunities they deserve to grow and succeed." },
-  { icon: Heart, title: "Our Values", desc: "Inclusivity, transparency, and empowerment drive everything we do — from curating opportunities to building community." },
-  { icon: TrendingUp, title: "Our Impact", desc: "We've helped thousands of individuals find scholarships, jobs, and programs that have transformed their careers and lives." },
+  { icon: Target, title: "Our Mission", desc: "To expand access to global opportunities and empower individuals through technology, transparency, and innovation. We aim to break down geographic and socio-economic barriers by creating clear pathways to both professional and academic achievement." },
+  { icon: Eye, title: "Our Vision", desc: "To become the world's leading platform for discovering opportunities, connecting talent with employers, and delivering professional services — building a future where every skilled individual can contribute to global progress." },
+  { icon: Heart, title: "Our Values", desc: "Trust, clarity, and forward momentum. A confident, caring navigator that verifies opportunity and propels ambition into global impact — with friendly authority rather than corporate distance." },
+  { icon: TrendingUp, title: "Our Impact", desc: "We connect thousands of individuals with verified, life-changing opportunities — scholarships, international jobs, internships, fellowships, and specialized training programs across the globe." },
 ];
 
 const fadeUp = {
@@ -141,15 +141,15 @@ export default function About() {
               viewport={{ once: true }}
               className="space-y-6 text-muted-foreground leading-relaxed"
             >
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground">Our Story</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">About the Company</h2>
               <p>
-                Somopportunity was founded with a simple yet powerful mission: to democratize access to opportunities for talented individuals regardless of their background or location.
+                Somopportunity is a premier global digital ecosystem engineered to bridge the gap between human potential and global possibilities. We serve as a comprehensive hub where ambition meets action, connecting thousands of individuals with verified, life-changing opportunities including prestigious scholarships, international jobs, internships, fellowships, and specialized training programs.
               </p>
               <p>
-                We aggregate scholarships, jobs, internships, grants, fellowships, competitions, conferences, and training programs from around the globe into one easy-to-navigate platform. Whether you're a student looking for your first scholarship or a professional seeking your next career move, Somopportunity is here to help you discover what's possible.
+                Beyond being a discovery platform, Somopportunity functions as a strategic partner for organizations worldwide. We provide sophisticated recruitment solutions and professional technical services that empower institutions to identify top-tier talent and maintain high-quality operational documentation.
               </p>
               <p>
-                Our platform serves opportunity seekers who want to grow, and providers who want to reach the most qualified candidates worldwide.
+                Our platform is built on the belief that access to information is the ultimate equalizer in the modern global economy — a confident, caring navigator that verifies opportunity and propels ambition into global impact.
               </p>
             </motion.div>
           </div>
