@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Facebook, Linkedin, Mail, MapPin, Send, MessageCircle } from "lucide-react";
 import { useFooterSettings } from "@/hooks/useFooterSettings";
+import logo from "@/assets/somopportunity-logo.png";
 
 const opportunities = [
   { label: "Scholarships", href: "/opportunities?category=scholarship" },
@@ -77,15 +78,15 @@ export default function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="h-9 w-9 rounded-full bg-white/20 flex items-center justify-center">
-                <span className="text-white font-extrabold text-sm">S</span>
+              <div className="h-10 w-10 rounded-full bg-white/15 flex items-center justify-center p-1.5">
+                <img src={logo} alt="Somopportunity" className="h-full w-full object-contain" />
               </div>
               <span className="text-lg font-extrabold tracking-tight text-white uppercase">
                 Somopportunity
               </span>
             </div>
             <p className="text-sm text-slate-300 leading-relaxed mb-6">
-              Your trusted platform for discovering scholarships, internships, and career opportunities worldwide. Join 2M+ members advancing their careers.
+              Your gateway to global opportunities — a digital ecosystem connecting talent with verified scholarships, jobs, internships, fellowships, and training programs worldwide.
             </p>
             <div className="flex items-center gap-3">
               {socials.map((s) => (

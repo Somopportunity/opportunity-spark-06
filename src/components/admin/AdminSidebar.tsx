@@ -10,7 +10,9 @@ import {
   Shield,
   Globe,
   Layout,
+  MessageSquareText,
 } from "lucide-react";
+import logo from "@/assets/somopportunity-logo.png";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
@@ -34,6 +36,7 @@ const managementItems = [
   { title: "Content", url: "/admin/content", icon: FileText },
   { title: "Opportunities", url: "/admin/opportunities", icon: Briefcase },
   { title: "Submissions", url: "/admin/submissions", icon: Inbox },
+  { title: "Service Requests", url: "/admin/service-requests", icon: MessageSquareText },
   { title: "Subscriptions", url: "/admin/subscriptions", icon: CreditCard },
   { title: "Site Pages", url: "/admin/pages", icon: Globe },
   { title: "Footer", url: "/admin/footer", icon: Layout },
@@ -92,8 +95,8 @@ export function AdminSidebar() {
         {!collapsed && (
           <div className="px-4 pb-4">
             <div className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground text-sm font-bold">
-                S
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/10 p-1">
+                <img src={logo} alt="Somopportunity" className="h-full w-full object-contain" />
               </div>
               <div>
                 <p className="text-sm font-semibold text-foreground">Admin Panel</p>
