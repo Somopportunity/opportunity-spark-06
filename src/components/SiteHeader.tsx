@@ -21,6 +21,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { useAuth } from "@/contexts/AuthContext";
 import LoginModal from "@/components/LoginModal";
 import NotificationBell from "@/components/NotificationBell";
+import logo from "@/assets/somopportunity-logo.png";
 
 const opportunityItems = [
   { label: "Jobs", category: "job", desc: "Career opportunities across industries" },
@@ -166,8 +167,9 @@ export default function SiteHeader() {
         <div className="mx-auto max-w-7xl px-4 pt-3">
           <div className="glass-nav rounded-2xl border border-border/60 shadow-[var(--nav-shadow)] px-5 py-2.5">
             <div className="flex items-center justify-between">
-              <a href="/" className="flex items-center gap-1.5 text-xl font-extrabold tracking-tight shrink-0">
-                <span className="text-gradient">Somopportunity</span>
+              <a href="/" className="flex items-center gap-2 text-xl font-extrabold tracking-tight shrink-0">
+                <img src={logo} alt="Somopportunity" className="h-8 w-8 object-contain" />
+                <span className="text-gradient uppercase">Somopportunity</span>
               </a>
 
               <nav className="hidden items-center gap-0.5 lg:flex">
