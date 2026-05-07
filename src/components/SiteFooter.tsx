@@ -78,12 +78,9 @@ export default function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="h-10 w-10 rounded-full bg-white/15 flex items-center justify-center p-1.5">
+              <div className="h-14 w-14 rounded-full bg-white/15 flex items-center justify-center p-1.5">
                 <img src={logo} alt="Somopportunity" className="h-full w-full object-contain" />
               </div>
-              <span className="text-lg font-extrabold tracking-tight text-white uppercase">
-                Somopportunity
-              </span>
             </div>
             <p className="text-sm text-slate-300 leading-relaxed mb-6">
               Your gateway to global opportunities — a digital ecosystem connecting talent with verified scholarships, jobs, internships, fellowships, and training programs worldwide.
