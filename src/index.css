@@ -16,18 +16,18 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
 
-    /* Brand: Somopportunity — Primary #1a70ad, Secondary #70c8dd */
-    --primary: 201 83% 39%;
+    /* Brand: UN-inspired — Primary #009EDB, Dark #003A8F, Light #E6F4FA */
+    --primary: 198 100% 43%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 189 65% 65%;
-    --secondary-foreground: 201 83% 18%;
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 215 100% 28%;
 
-    --muted: 200 30% 96%;
-    --muted-foreground: 201 15% 42%;
+    --muted: 198 60% 97%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 189 70% 92%;
-    --accent-foreground: 201 83% 30%;
+    --accent: 198 78% 94%;
+    --accent-foreground: 215 100% 28%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
