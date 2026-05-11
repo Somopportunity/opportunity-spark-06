@@ -3,6 +3,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
 };
 
 Deno.serve(async (req) => {
@@ -21,9 +22,12 @@ Deno.serve(async (req) => {
 
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const anonKey =
+      Deno.env.get("SUPABASE_ANON_KEY") ||
+      Deno.env.get("SUPABASE_PUBLISHABLE_KEY")!;
 
-    // Verify the caller is an admin
-    const userClient = createClient(supabaseUrl, Deno.env.get("SUPABASE_PUBLISHABLE_KEY")!, {
+    // Verify caller is admin
+    const userClient = createClient(supabaseUrl, anonKey, {
       global: { headers: { Authorization: authHeader } },
     });
     const { data: { user: caller } } = await userClient.auth.getUser();
@@ -34,7 +38,9 @@ Deno.serve(async (req) => {
       });
     }
 
-    const { data: callerProfile } = await userClient
+    const adminClient = createClient(supabaseUrl, serviceRoleKey);
+
+    const { data: callerProfile } = await adminClient
       .from("profiles")
       .select("role")
       .eq("id", caller.id)
@@ -48,17 +54,13 @@ Deno.serve(async (req) => {
     }
 
     const { email, password, role, full_name } = await req.json();
-
     if (!email || !password || !role) {
-      return new Response(JSON.stringify({ error: "email, password, and role are required" }), {
+      return new Response(JSON.stringify({ error: "email, password, role required" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    const adminClient = createClient(supabaseUrl, serviceRoleKey);
-
-    // Create the user
     const { data: newUser, error: createError } = await adminClient.auth.admin.createUser({
       email,
       password,
@@ -73,7 +75,6 @@ Deno.serve(async (req) => {
       });
     }
 
-    // Update the profile role (profile is auto-created by trigger)
     if (newUser.user) {
       await adminClient
         .from("profiles")
