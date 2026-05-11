@@ -11,6 +11,7 @@ import {
   Globe,
   Layout,
   MessageSquareText,
+  Mail,
 } from "lucide-react";
 import logo from "@/assets/somopportunity-logo.png";
 import { NavLink } from "@/components/NavLink";
@@ -37,6 +38,7 @@ const managementItems = [
   { title: "Opportunities", url: "/admin/opportunities", icon: Briefcase },
   { title: "Submissions", url: "/admin/submissions", icon: Inbox },
   { title: "Service Requests", url: "/admin/service-requests", icon: MessageSquareText },
+  { title: "Contact Messages", url: "/admin/contact-messages", icon: Mail },
   { title: "Subscriptions", url: "/admin/subscriptions", icon: CreditCard },
   { title: "Site Pages", url: "/admin/pages", icon: Globe },
   { title: "Footer", url: "/admin/footer", icon: Layout },
