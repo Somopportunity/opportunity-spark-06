@@ -39,6 +39,7 @@ export default function TechnicalWriting() {
     full_name: "",
     organization_name: "",
     email: "",
+    phone: "",
     project_type: "",
     description: "",
     deadline: "",
@@ -54,6 +55,7 @@ export default function TechnicalWriting() {
       full_name: form.full_name,
       organization_name: form.organization_name,
       email: form.email,
+      phone: form.phone || null,
       project_type: form.project_type || null,
       description: form.description || null,
       deadline: form.deadline ? new Date(form.deadline).toISOString() : null,
@@ -229,6 +231,13 @@ export default function TechnicalWriting() {
                       <Label>Email *</Label>
                       <Input type="email" value={form.email} onChange={(e) => set("email", e.target.value)} required placeholder="jane@acme.com" />
                     </div>
+                    <div className="space-y-2">
+                      <Label>Phone Number *</Label>
+                      <Input type="tel" value={form.phone} onChange={(e) => set("phone", e.target.value)} required placeholder="+1 555 123 4567" />
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
                       <Label>Project Type</Label>
                       <Select value={form.project_type} onValueChange={(v) => set("project_type", v)}>
