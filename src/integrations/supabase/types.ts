@@ -236,6 +236,39 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_messages: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          ip_address: string | null
+          is_read: boolean
+          message: string
+          subject: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          ip_address?: string | null
+          is_read?: boolean
+          message: string
+          subject: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          ip_address?: string | null
+          is_read?: boolean
+          message?: string
+          subject?: string
+        }
+        Relationships: []
+      }
       content_submissions: {
         Row: {
           admin_notes: string | null
@@ -859,6 +892,7 @@ export type Database = {
           full_name: string
           id: string
           organization_name: string
+          phone: string | null
           project_type: string | null
         }
         Insert: {
@@ -869,6 +903,7 @@ export type Database = {
           full_name: string
           id?: string
           organization_name: string
+          phone?: string | null
           project_type?: string | null
         }
         Update: {
@@ -879,6 +914,7 @@ export type Database = {
           full_name?: string
           id?: string
           organization_name?: string
+          phone?: string | null
           project_type?: string | null
         }
         Relationships: []
