@@ -57,6 +57,7 @@ import AdminSubscriptions from "./pages/admin/AdminSubscriptions";
 import AdminContentManagement from "./pages/admin/AdminContentManagement";
 import AdminSubmissions from "./pages/admin/AdminSubmissions";
 import AdminServiceRequests from "./pages/admin/AdminServiceRequests";
+import AdminContactMessages from "./pages/admin/AdminContactMessages";
 import AdminOpportunities from "./pages/admin/AdminOpportunities";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminCreateOpportunity from "./pages/admin/AdminCreateOpportunity";
@@ -142,6 +143,7 @@ const App = () => (
               <Route path="opportunities/create" element={<AdminRoute requiredRole="editor"><AdminCreateOpportunity /></AdminRoute>} />
               <Route path="submissions" element={<AdminSubmissions />} />
               <Route path="service-requests" element={<AdminServiceRequests />} />
+              <Route path="contact-messages" element={<AdminContactMessages />} />
               <Route path="analytics" element={<AdminAnalytics />} />
               <Route path="settings" element={<AdminRoute requiredRole="admin"><AdminSettings /></AdminRoute>} />
               <Route path="pages" element={<AdminRoute requiredRole="admin"><AdminPages /></AdminRoute>} />
