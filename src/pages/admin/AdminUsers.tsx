@@ -64,27 +64,44 @@ export default function AdminUsers() {
     }
     setCreating(true);
     try {
-      const session = (await supabase.auth.getSession()).data.session;
-      const res = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-create-user`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${session?.access_token}`,
-          },
-          body: JSON.stringify(newUser),
-        }
+      // Use a separate Supabase client so the admin's session is NOT replaced
+      const { createClient } = await import("@supabase/supabase-js");
+      const tempClient = createClient(
+        import.meta.env.VITE_SUPABASE_URL,
+        import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+        { auth: { persistSession: false, autoRefreshToken: false, storageKey: "admin-create-tmp" } }
       );
-      const result = await res.json();
-      if (!res.ok) {
-        toast({ title: "Error", description: result.error, variant: "destructive" });
+
+      const { data: signUpData, error: signUpError } = await tempClient.auth.signUp({
+        email: newUser.email,
+        password: newUser.password,
+        options: { data: { full_name: newUser.full_name || "" } },
+      });
+
+      if (signUpError || !signUpData.user) {
+        toast({ title: "Error", description: signUpError?.message || "Failed to create user", variant: "destructive" });
+        setCreating(false);
+        return;
+      }
+
+      // Sign the temp client out immediately so it does not hold a session
+      await tempClient.auth.signOut();
+
+      // Update the auto-created profile with role + full_name (admin RLS allows this)
+      const { error: profileError } = await supabase
+        .from("profiles")
+        .update({ role: newUser.role as any, full_name: newUser.full_name || "" })
+        .eq("id", signUpData.user.id);
+
+      if (profileError) {
+        toast({ title: "User created, but role update failed", description: profileError.message, variant: "destructive" });
       } else {
         toast({ title: "User created successfully" });
-        setCreateOpen(false);
-        setNewUser({ email: "", password: "", role: "viewer", full_name: "" });
-        fetchUsers();
       }
+
+      setCreateOpen(false);
+      setNewUser({ email: "", password: "", role: "viewer", full_name: "" });
+      fetchUsers();
     } catch (err: any) {
       toast({ title: "Error", description: err.message, variant: "destructive" });
     }
