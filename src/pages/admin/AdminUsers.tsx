@@ -87,11 +87,18 @@ export default function AdminUsers() {
       // Sign the temp client out immediately so it does not hold a session
       await tempClient.auth.signOut();
 
-      // Update the auto-created profile with role + full_name (admin RLS allows this)
+      // Upsert the profile with role + full_name (handles missing profile if trigger didn't fire)
       const { error: profileError } = await supabase
         .from("profiles")
-        .update({ role: newUser.role as any, full_name: newUser.full_name || "" })
-        .eq("id", signUpData.user.id);
+        .upsert(
+          {
+            id: signUpData.user.id,
+            role: newUser.role as any,
+            full_name: newUser.full_name || "",
+            email: newUser.email,
+          },
+          { onConflict: "id" }
+        );
 
       if (profileError) {
         toast({ title: "User created, but role update failed", description: profileError.message, variant: "destructive" });
