@@ -95,7 +95,6 @@ export default function AdminUsers() {
             id: signUpData.user.id,
             role: newUser.role as any,
             full_name: newUser.full_name || "",
-            email: newUser.email,
           },
           { onConflict: "id" }
         );
