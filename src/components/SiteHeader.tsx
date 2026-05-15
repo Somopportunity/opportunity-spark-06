@@ -163,9 +163,9 @@ export default function SiteHeader() {
   const servicesActive = path.startsWith("/services");
   return (
     <>
-      <header className="sticky top-0 z-50">
-        <div className="mx-auto max-w-7xl px-4 pt-3">
-          <div className="glass-nav rounded-2xl border border-border/60 shadow-[var(--nav-shadow)] px-5 py-2.5">
+      <header className="relative z-50 w-full bg-white border-b border-border/60">
+        <div className="w-full px-6">
+          <div className="px-2 py-2.5">
             <div className="flex items-center justify-between">
               <a href="/" className="flex items-center gap-2 text-xl font-extrabold tracking-tight shrink-0">
                 <img src={logo} alt="Somopportunity" className="h-12 w-12 object-contain" />
