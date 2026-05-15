@@ -256,7 +256,7 @@ export default function SiteHeader() {
         </div>
 
         {open && (
-          <div className="mx-auto max-w-7xl px-4 pt-2 lg:hidden">
+          <div className="w-full px-6 pt-2 lg:hidden">
             <nav className="glass-nav flex flex-col gap-1 rounded-2xl border border-border/60 shadow-[var(--nav-shadow)] p-4 animate-fade-in">
               {navLinks.map((l) => (
                 <button key={l.label} onClick={() => { setOpen(false); navigate(l.href); }}
