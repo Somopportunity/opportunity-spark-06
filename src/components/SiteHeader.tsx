@@ -163,7 +163,7 @@ export default function SiteHeader() {
   const servicesActive = path.startsWith("/services");
   return (
     <>
-      <header className="relative z-50 w-full bg-white border-b border-border/60">
+      <header className="sticky top-0 z-50 w-full bg-white border-b border-border/60">
         <div className="w-full px-6">
           <div className="px-2 py-2.5">
             <div className="flex items-center justify-between">
