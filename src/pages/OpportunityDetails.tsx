@@ -37,6 +37,21 @@ const categoryColors: Record<string, string> = {
 // Categories that redirect to external link instead of internal apply
 const externalCategories = ["scholarship", "grant", "internship", "fellowship", "conference"];
 
+// Dynamic primary CTA label by opportunity category
+const ctaLabelByCategory: Record<string, string> = {
+  job: "Apply for Job",
+  internship: "Apply for Internship",
+  scholarship: "Apply for Scholarship",
+  fellowship: "Apply for Fellowship",
+  grant: "Submit Grant Application",
+  workshop: "Register for Workshop",
+  conference: "Register for Conference",
+  event: "Register for Event",
+  competition: "Enter Competition",
+  volunteer: "Volunteer Now",
+};
+const getCtaLabel = (category: string) => ctaLabelByCategory[category] || "Apply Now";
+
 function SafeHTML({ html }: { html: string }) {
   return (
     <div
