@@ -325,7 +325,7 @@ export default function OpportunityDetails() {
                                 className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-bold text-lg py-6"
                                 onClick={() => window.open(opp.external_link, "_blank")}
                               >
-                                <ExternalLink size={18} className="mr-2" /> APPLY NOW
+                                <ExternalLink size={18} className="mr-2" /> {getCtaLabel(opp.category).toUpperCase()}
                               </Button>
                             )}
                             {opp.official_website && (
@@ -346,7 +346,7 @@ export default function OpportunityDetails() {
                               if (formEl) formEl.scrollIntoView({ behavior: "smooth" });
                             }}
                           >
-                            APPLY NOW
+                            {getCtaLabel(opp.category).toUpperCase()}
                           </Button>
                         )}
                       </div>
