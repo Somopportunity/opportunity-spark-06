@@ -7,7 +7,7 @@ const floatingCards = [
     org: "TechCorp Africa",
     location: "Nairobi, Kenya",
     type: "Job",
-    color: "from-primary/10 to-primary/5",
+    badge: "bg-primary/10 text-primary border-primary/20",
     delay: 0,
   },
   {
@@ -15,7 +15,7 @@ const floatingCards = [
     org: "Global Education Fund",
     location: "Remote",
     type: "Scholarship",
-    color: "from-accent to-accent/60",
+    badge: "bg-secondary/20 text-primary border-secondary/40",
     delay: 0.15,
   },
   {
@@ -23,7 +23,7 @@ const floatingCards = [
     org: "UN Development",
     location: "New York, USA",
     type: "Fellowship",
-    color: "from-secondary/10 to-secondary/5",
+    badge: "bg-primary/5 text-primary border-primary/15",
     delay: 0.3,
   },
 ];
