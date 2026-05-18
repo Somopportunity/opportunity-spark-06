@@ -42,9 +42,9 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-accent/60 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-sm">
-                <Sparkles size={14} />
-                Your gateway to global opportunities
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-1.5 text-sm font-medium text-primary shadow-sm backdrop-blur-sm">
+                <Globe2 size={14} />
+                A global platform for trusted opportunities
               </div>
             </motion.div>
 
