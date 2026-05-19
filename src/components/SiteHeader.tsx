@@ -237,10 +237,10 @@ export default function SiteHeader() {
 
                 {!loading && !user && (
                   <>
-                    <Button variant="ghost" size="sm" className="text-muted-foreground font-medium rounded-lg hover:bg-accent/50 ml-1" onClick={() => setLoginOpen(true)}>
+                    <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold rounded-xl ml-1" onClick={() => setLoginOpen(true)}>
                       Log In
                     </Button>
-                    <Button size="sm" className="btn-gradient font-semibold px-5 rounded-xl shadow-sm" onClick={() => navigate("/signup")}>
+                    <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-5 rounded-xl shadow-sm" onClick={() => navigate("/signup")}>
                       Join
                     </Button>
                   </>
@@ -312,10 +312,10 @@ export default function SiteHeader() {
 
               {!loading && !user && (
                 <div className="flex flex-col gap-2 pt-3 border-t border-border/60">
-                  <Button variant="outline" className="border-border text-foreground font-medium w-full rounded-xl" onClick={() => { setOpen(false); setLoginOpen(true); }}>
+                  <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold w-full rounded-xl" onClick={() => { setOpen(false); setLoginOpen(true); }}>
                     Log In
                   </Button>
-                  <Button className="btn-gradient font-semibold w-full rounded-xl" onClick={() => { setOpen(false); navigate("/signup"); }}>
+                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold w-full rounded-xl" onClick={() => { setOpen(false); navigate("/signup"); }}>
                     Join
                   </Button>
                 </div>

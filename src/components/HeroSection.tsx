@@ -1,17 +1,37 @@
-import { Sparkles } from "lucide-react";
+import { Sparkles, Globe2 } from "lucide-react";
 import { motion } from "framer-motion";
 import HeroSearchBar from "./HeroSearchBar";
 import CategoryChips from "./CategoryChips";
 import HeroVisual from "./HeroVisual";
+import logo from "@/assets/somopportunity-logo.png";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-10 pb-16 md:pt-20 md:pb-28">
-      {/* Background */}
-      <div className="absolute inset-0 mesh-bg" />
+    <section className="relative overflow-hidden pt-10 pb-16 md:pt-20 md:pb-28 bg-gradient-to-b from-white via-secondary/10 to-white">
+      {/* UN-inspired soft background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,hsl(var(--secondary)/0.18),transparent_55%),radial-gradient(circle_at_85%_30%,hsl(var(--primary)/0.10),transparent_50%)]" />
+
+      {/* Subtle grid pattern for a global, professional feel */}
+      <div
+        className="absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
+        }}
+      />
+
+      {/* Logo watermark */}
+      <img
+        src={logo}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-16 -bottom-16 w-[420px] md:w-[560px] opacity-[0.05] select-none"
+      />
+
       <div className="absolute top-10 left-[5%] h-[500px] w-[500px] rounded-full bg-primary/[0.06] blur-[120px]" />
-      <div className="absolute bottom-0 right-[10%] h-[400px] w-[400px] rounded-full bg-secondary/[0.04] blur-[100px]" />
-      <div className="absolute top-[40%] left-[50%] h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-primary/[0.03] blur-[80px]" />
+      <div className="absolute bottom-0 right-[10%] h-[400px] w-[400px] rounded-full bg-secondary/[0.10] blur-[100px]" />
+      <div className="absolute top-[40%] left-[50%] h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-primary/[0.04] blur-[80px]" />
 
       <div className="container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -22,9 +42,9 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-accent/60 px-4 py-1.5 text-sm font-medium text-primary backdrop-blur-sm">
-                <Sparkles size={14} />
-                Your gateway to global opportunities
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-1.5 text-sm font-medium text-primary shadow-sm backdrop-blur-sm">
+                <Globe2 size={14} />
+                A global platform for trusted opportunities
               </div>
             </motion.div>
 

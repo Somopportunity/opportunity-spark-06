@@ -7,7 +7,7 @@ const floatingCards = [
     org: "TechCorp Africa",
     location: "Nairobi, Kenya",
     type: "Job",
-    color: "from-primary/10 to-primary/5",
+    badge: "bg-primary/10 text-primary border-primary/20",
     delay: 0,
   },
   {
@@ -15,7 +15,7 @@ const floatingCards = [
     org: "Global Education Fund",
     location: "Remote",
     type: "Scholarship",
-    color: "from-accent to-accent/60",
+    badge: "bg-secondary/20 text-primary border-secondary/40",
     delay: 0.15,
   },
   {
@@ -23,7 +23,7 @@ const floatingCards = [
     org: "UN Development",
     location: "New York, USA",
     type: "Fellowship",
-    color: "from-secondary/10 to-secondary/5",
+    badge: "bg-primary/5 text-primary border-primary/15",
     delay: 0.3,
   },
 ];
@@ -57,7 +57,7 @@ export default function HeroVisual() {
                   <span>{card.location}</span>
                 </div>
               </div>
-              <span className="shrink-0 rounded-full bg-accent px-2.5 py-0.5 text-[11px] font-medium text-accent-foreground">
+              <span className={`shrink-0 rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${card.badge}`}>
                 {card.type}
               </span>
             </div>

@@ -236,25 +236,15 @@ export default function OpportunitiesBrowse() {
                           <DeadlineCountdown deadline={opp.deadline} />
                         </div>
 
-                        {/* Action Buttons: Stack on mobile, row on small screens */}
-                        <div className="flex flex-col xs:flex-row gap-2 mt-2 sm:mt-0 sm:ml-auto">
+                        {/* Action: only View Details by default for a cleaner browse view */}
+                        <div className="flex justify-end mt-1">
                           <Button
                             size="sm"
-                            variant="outline"
-                            className="w-full sm:w-auto"
+                            className="btn-gradient w-full sm:w-auto"
                             onClick={(e) => { e.stopPropagation(); navigate(`/opportunities/${opp.id}`); }}
                           >
                             View Details
                           </Button>
-                          {opp.external_link && (
-                            <Button
-                              size="sm"
-                              className="btn-gradient w-full sm:w-auto"
-                              onClick={(e) => { e.stopPropagation(); window.open(opp.external_link, "_blank"); }}
-                            >
-                              Apply <ExternalLink size={14} className="ml-1" />
-                            </Button>
-                          )}
                         </div>
                       </CardContent>
                     </Card>
