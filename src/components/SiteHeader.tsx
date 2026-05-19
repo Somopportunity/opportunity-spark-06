@@ -169,7 +169,7 @@ export default function SiteHeader() {
           <div className="px-2 py-2.5">
             <div className="flex items-center justify-between">
               <a href="/" className="flex items-center gap-2 text-xl font-extrabold tracking-tight shrink-0">
-                <img src={logo} alt="Somopportunity" className="h-20 w-20 md:h-28 md:w-28 object-contain" />
+                <img src={logo} alt="Somopportunity" className="h-16 w-16 md:h-24 md:w-24 object-contain" />
               </a>
 
               <nav className="hidden items-center gap-0.5 lg:flex">
