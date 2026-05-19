@@ -6,6 +6,16 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { motion } from "framer-motion";
+import DOMPurify from "dompurify";
+
+function SafeHTML({ html }: { html: string }) {
+  return (
+    <div
+      className="prose prose-sm max-w-none text-sm text-muted-foreground leading-relaxed line-clamp-2 flex-1"
+      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(html) }}
+    />
+  );
+}
 
 export default function LatestOpportunities() {
   const navigate = useNavigate();
