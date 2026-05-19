@@ -91,9 +91,7 @@ export default function LatestOpportunities() {
                   {opp.deadline && <span className="flex items-center gap-1.5"><CalendarDays size={12} /> Deadline: {new Date(opp.deadline).toLocaleDateString()}</span>}
                 </div>
 
-                <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2 flex-1">
-                  {opp.description}
-                </p>
+                <SafeHTML html={opp.description || ""} />
 
                 <Button
                   size="sm"
