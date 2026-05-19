@@ -38,7 +38,6 @@ interface PartnerProfile {
   id: string;
   full_name: string | null;
   avatar_url: string | null;
-  organization_name: string | null;
 }
 
 interface Conversation {
@@ -76,7 +75,6 @@ export default function ChatSystem() {
     }
 
     setMessages(msgs || []);
-
     const partnerIds = Array.from(
       new Set((msgs || []).map((m) => (m.sender_id === user.id ? m.recipient_id : m.sender_id)))
     );
@@ -84,7 +82,7 @@ export default function ChatSystem() {
     if (partnerIds.length > 0) {
       const { data: profs } = await supabase
         .from("profiles")
-        .select("id, full_name, avatar_url, organization_name")
+        .select("id, full_name, avatar_url")
         .in("id", partnerIds);
       const map: Record<string, PartnerProfile> = {};
       (profs || []).forEach((p) => (map[p.id] = p));
@@ -177,7 +175,7 @@ export default function ChatSystem() {
     if (!search.trim()) return conversations;
     const q = search.toLowerCase();
     return conversations.filter((c) => {
-      const name = (c.partner?.organization_name || c.partner?.full_name || "").toLowerCase();
+      const name = (c.partner?.full_name || "").toLowerCase();
       return name.includes(q) || c.lastMessage.body.toLowerCase().includes(q);
     });
   }, [conversations, search]);
@@ -295,7 +293,7 @@ export default function ChatSystem() {
                 </div>
               ) : (
                 filteredConvs.map((c) => {
-                  const name = c.partner?.organization_name || c.partner?.full_name || "Unknown user";
+                  const name = c.partner?.full_name || "Unknown user";
                   const isActive = c.partnerId === activePartnerId;
                   return (
                     <button
@@ -370,14 +368,14 @@ export default function ChatSystem() {
                   <Avatar className="h-9 w-9">
                     <AvatarImage src={activeConv.partner?.avatar_url || ""} />
                     <AvatarFallback className="bg-accent text-accent-foreground text-xs font-bold">
-                      {(activeConv.partner?.organization_name || activeConv.partner?.full_name || "?")
+                      {(activeConv.partner?.full_name || "?")
                         .charAt(0)
                         .toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
                   <div className="min-w-0 flex-1">
                     <h3 className="font-semibold text-sm text-foreground truncate">
-                      {activeConv.partner?.organization_name || activeConv.partner?.full_name || "Unknown"}
+                      {activeConv.partner?.full_name || "Unknown"}
                     </h3>
                     <p className="text-[11px] text-muted-foreground">
                       {activeConv.messages.length} message{activeConv.messages.length !== 1 ? "s" : ""}

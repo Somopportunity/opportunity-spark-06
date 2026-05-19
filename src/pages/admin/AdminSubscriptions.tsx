@@ -15,7 +15,7 @@ export default function AdminSubscriptions() {
     setLoading(true);
     const { data } = await supabase
       .from("provider_subscriptions")
-      .select("*, subscription_plans(name, display_name, posting_limit), profiles!provider_subscriptions_provider_id_fkey(full_name, email)")
+      .select("*, subscription_plans(name, posting_limit), profiles!provider_subscriptions_provider_id_fkey(full_name)")
       .order("created_at", { ascending: false });
 
     const rows = data || [];
@@ -58,8 +58,8 @@ export default function AdminSubscriptions() {
       const cycleEnd = new Date(cycleStart);
       cycleEnd.setMonth(cycleEnd.getMonth() + 1);
 
-      updates.start = cycleStart.toISOString();
-      updates.end = cycleEnd.toISOString();
+      updates.start_date = cycleStart.toISOString();
+      updates.end_date = cycleEnd.toISOString();
       updates.renewal_date = cycleEnd.toISOString();
     }
 
@@ -174,8 +174,8 @@ export default function AdminSubscriptions() {
                             Reject
                           </Button>
                         )}
-                        {(sub.status === "pending" || sub.status === "pending_approval" || sub.status === "under_review") && (
-                          <Button size="sm" variant="outline" onClick={() => updateStatus(sub.id, sub.provider_id, "under_review")}>
+                        {(sub.status === "pending") && (
+                          <Button size="sm" variant="outline" onClick={() => updateStatus(sub.id, sub.provider_id, "pending")}>
                             Mark Under Review
                           </Button>
                         )}
