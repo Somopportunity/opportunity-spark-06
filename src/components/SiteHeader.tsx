@@ -309,10 +309,10 @@ export default function SiteHeader() {
 
               {!loading && !user && (
                 <div className="flex flex-col gap-2 pt-3 border-t border-border/60">
-                  <Button variant="outline" className="border-border text-foreground font-medium w-full rounded-xl" onClick={() => { setOpen(false); setLoginOpen(true); }}>
+                  <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold w-full rounded-xl" onClick={() => { setOpen(false); setLoginOpen(true); }}>
                     Log In
                   </Button>
-                  <Button className="btn-gradient font-semibold w-full rounded-xl" onClick={() => { setOpen(false); navigate("/signup"); }}>
+                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold w-full rounded-xl" onClick={() => { setOpen(false); navigate("/signup"); }}>
                     Join
                   </Button>
                 </div>
