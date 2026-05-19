@@ -35,6 +35,10 @@ export default function Contact() {
     try {
       const { error } = await supabase.functions.invoke("send-contact-message", {
         body: { ...parsed.data, website: form.website },
+        headers: {
+          // This overrides the automatic auth header and prevents the Refresh Token error
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}` 
+        }
       });
       if (error) throw error;
       setSubmitted(true);

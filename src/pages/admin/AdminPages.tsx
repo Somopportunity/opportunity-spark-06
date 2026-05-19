@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Save, FileText, Shield } from "lucide-react";
 import RichTextEditor from "@/components/RichTextEditor";
+import { title } from "process";
 
 interface SitePage {
   id: string;
@@ -33,13 +34,9 @@ export default function AdminPages() {
       .in("slug", ["terms", "privacy"])
       .order("updated_at", { ascending: false });
     if (!error && data) {
-      const latestPages = Array.from(
-        new Map((data as SitePage[]).map((page) => [page.slug, page])).values()
-      );
-
-      setPages(latestPages);
+      setPages(data as SitePage[]);
       const d: Record<string, string> = { terms: "", privacy: "" };
-      latestPages.forEach((p) => { d[p.slug] = p.content || ""; });
+      data.forEach((p: any) => { d[p.slug] = p.content || ""; });
       setDrafts(d);
     }
     setLoading(false);
@@ -56,23 +53,14 @@ export default function AdminPages() {
 
     const { data: updatedRows, error: updateError } = await supabase
       .from("site_pages")
-      .update(payload as any)
-      .eq("slug", slug)
+      .update({
+        slug,
+        title: slug === "terms" ? "Terms of Service" : "Privacy Policy",
+        content: drafts[slug] || "",
+        updated_by: user?.id,
+        updated_at: new Date().toISOString(),
+      } as any)
       .select();
-
-    let error = updateError;
-
-    if (!updateError && (!updatedRows || updatedRows.length === 0)) {
-      const { error: insertError } = await supabase
-        .from("site_pages")
-        .insert({
-          slug,
-          ...payload,
-        } as any)
-        .select();
-
-      error = insertError;
-    }
 
     if (error) {
       toast({ title: "Error saving", description: error.message, variant: "destructive" });

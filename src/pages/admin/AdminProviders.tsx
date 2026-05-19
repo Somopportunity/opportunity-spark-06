@@ -82,13 +82,13 @@ export default function AdminProviders() {
       .eq("role", "provider")
       .order("created_at", { ascending: false });
 
-    console.log(profiles)  
+ 
     const ids = (profiles || []).map((p) => p.id);
 
     const [{ data: subs }, { data: opps }] = await Promise.all([
       supabase
         .from("provider_subscriptions")
-        .select("provider_id, status, subscription_plans(display_name)")
+        .select("provider_id, status, subscription_plans(name)")
         .in("provider_id", ids.length ? ids : ["__none__"]),
       supabase
         .from("opportunities")
@@ -99,7 +99,7 @@ export default function AdminProviders() {
     const subsMap = new Map(
       (subs || []).map((s: any) => [
         s.provider_id,
-        { status: s.status, plan_display_name: s.subscription_plans?.display_name || "Free" },
+        { status: s.status, plan_display_name: s.subscription_plans?.name || "Not Subcribed" },
       ])
     );
 
@@ -107,7 +107,7 @@ export default function AdminProviders() {
     (opps || []).forEach((o: any) => {
       oppCounts.set(o.provider_id, (oppCounts.get(o.provider_id) || 0) + 1);
     });
-
+    
     setProviders(
       (profiles || []).map((p) => ({
         ...p,
@@ -246,6 +246,7 @@ export default function AdminProviders() {
   const filtered = useMemo(() => {
     if (!search.trim()) return providers;
     const q = search.toLowerCase();
+   
     return providers.filter(
       (p) =>
         (p.full_name || "").toLowerCase().includes(q) ||
@@ -253,7 +254,6 @@ export default function AdminProviders() {
         p.id.toLowerCase().includes(q)
     );
   }, [providers, search]);
-
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
@@ -275,8 +275,6 @@ export default function AdminProviders() {
       case "active":
         return <Badge className="bg-emerald-100 text-emerald-700 border-emerald-200 hover:bg-emerald-100">Active</Badge>;
       case "pending":
-      case "pending_approval":
-      case "under_review":
         return <Badge className="bg-amber-100 text-amber-700 border-amber-200 hover:bg-amber-100">Pending</Badge>;
       case "suspended":
         return <Badge className="bg-red-100 text-red-700 border-red-200 hover:bg-red-100">Suspended</Badge>;
@@ -374,7 +372,7 @@ export default function AdminProviders() {
                             </div>
                           </TableCell>
                           <TableCell>{statusBadge(p.subscription?.status)}</TableCell>
-                          <TableCell><span className="text-sm font-medium">{p.subscription?.plan_display_name || "Free"}</span></TableCell>
+                          <TableCell><span className="text-sm font-medium">{p.subscription?.plan_display_name || "Not Subcribed"}</span></TableCell>
                           <TableCell className="text-center">
                             <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-muted text-xs font-semibold">{p.opportunity_count}</span>
                           </TableCell>
