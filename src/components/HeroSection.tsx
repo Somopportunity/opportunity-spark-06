@@ -11,15 +11,6 @@ export default function HeroSection() {
       {/* UN-inspired soft background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,hsl(var(--secondary)/0.18),transparent_55%),radial-gradient(circle_at_85%_30%,hsl(var(--primary)/0.10),transparent_50%)]" />
 
-      {/* Subtle grid pattern for a global, professional feel */}
-      <div
-        className="absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-      />
 
       {/* Logo watermark */}
       <img
