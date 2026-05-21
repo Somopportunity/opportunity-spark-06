@@ -149,17 +149,9 @@ export default function ProviderPayment() {
                 <div className="rounded-lg border border-border p-4 space-y-2">
                   <p className="font-semibold text-sm text-foreground">Premier Bank</p>
                   <div className="text-sm text-muted-foreground space-y-1">
-                    <p>Account Name: <span className="text-foreground">Somopportunity Inc.</span></p>
-                    <p>Account Number: <span className="text-foreground">XXXX XXXX</span></p>
-                    <p>Reference: <span className="text-foreground">Your Email & Phone</span></p>
-                  </div>
-                </div>
-                <div className="rounded-lg border border-border p-4 space-y-2">
-                  <p className="font-semibold text-sm text-foreground">Dahabshiil Bank</p>
-                  <div className="text-sm text-muted-foreground space-y-1">
-                    <p>Account Name: <span className="text-foreground">Somopportunity Inc.</span></p>
-                    <p>Account Number: <span className="text-foreground">XXXX XXXX</span></p>
-                    <p>Reference: <span className="text-foreground">Your Email & Phone</span></p>
+                    <p>Account Name: <span className="text-foreground">YASIN MOHAMOUD ISMAIL</span></p>
+                    <p>Account Number: <span className="text-foreground">100950073001</span></p>
+                    <p>Dahabshiil Your Trusted Financial Partner</p>
                   </div>
                 </div>
               </div>
