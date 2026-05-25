@@ -42,13 +42,13 @@ export default function AdminUsers() {
       return;
     }
 
-    const {error} = await supabase.from("admin_logs").insert({
+    const {admin_error} = await supabase.from("admin_logs").insert({
       actor_id: (await supabase.auth.getUser()).data.user?.id,
       action: `Changed role to ${newRole}`,
       target_id: userId,
       target_type: "user",
     });
-    console.log(error);
+    console.log(admin_error);
     toast({ title: "Role updated" });
     fetchUsers();
   };
