@@ -158,6 +158,7 @@ export default function AdminUsers() {
                 <Select value={newUser.role} onValueChange={(v) => setNewUser({ ...newUser, role: v })}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
+                    <SelectItem value="admin">Admin</SelectItem>
                     <SelectItem value="editor">Editor</SelectItem>
                     <SelectItem value="viewer">Viewer</SelectItem>
                     <SelectItem value="seeker">Seeker</SelectItem>
@@ -212,6 +213,7 @@ export default function AdminUsers() {
                               <SelectValue placeholder="Change role" />
                             </SelectTrigger>
                             <SelectContent>
+                              <SelectItem value="admin">Admin</SelectItem>
                               <SelectItem value="editor">Editor</SelectItem>
                               <SelectItem value="viewer">Viewer</SelectItem>
                               <SelectItem value="seeker">Seeker</SelectItem>
