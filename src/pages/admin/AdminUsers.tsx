@@ -46,7 +46,7 @@ export default function AdminUsers() {
       actor_id: (await supabase.auth.getUser()).data.user?.id,
       action: `Changed role to ${newRole}`,
       target_id: userId,
-      target_type: "user",
+      target_table: "profiles",
     });
     console.log(role_error);
     toast({ title: "Role updated" });
