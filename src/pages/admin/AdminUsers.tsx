@@ -43,7 +43,7 @@ export default function AdminUsers() {
     }
 
     await supabase.from("admin_logs").insert({
-      admin_id: (await supabase.auth.getUser()).data.user?.id,
+      actor_id: (await supabase.auth.getUser()).data.user?.id,
       action: `Changed role to ${newRole}`,
       target_id: userId,
       target_type: "user",
