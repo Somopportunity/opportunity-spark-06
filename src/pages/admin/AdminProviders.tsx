@@ -229,12 +229,13 @@ export default function AdminProviders() {
     } else {
       // Soft delete: change role to prevent access
       await supabase.from("provider_subscriptions").update({ status: "cancelled" }).eq("provider_id", provider.id);
-      await supabase.from("admin_logs").insert({
+      const {error:deletion_error } = await supabase.from("admin_logs").insert({
         actor_id: adminUser?.id,
         action: "Provider deleted",
         target_id: provider.id,
         target_table: "profile",
       });
+      console.log(deletion_error);
       toast({ title: "Provider removed" });
     }
 
