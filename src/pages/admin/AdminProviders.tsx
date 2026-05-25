@@ -220,20 +220,20 @@ export default function AdminProviders() {
       // Update subscription status to suspended if exists
       await supabase.from("provider_subscriptions").update({ status: "suspended" }).eq("provider_id", provider.id);
       await supabase.from("admin_logs").insert({
-        admin_id: adminUser?.id,
+        actor_id: adminUser?.id,
         action: "Provider suspended",
         target_id: provider.id,
-        target_type: "provider",
+        target_table: "profile",
       });
       toast({ title: "Provider suspended" });
     } else {
       // Soft delete: change role to prevent access
       await supabase.from("provider_subscriptions").update({ status: "cancelled" }).eq("provider_id", provider.id);
       await supabase.from("admin_logs").insert({
-        admin_id: adminUser?.id,
+        actor_id: adminUser?.id,
         action: "Provider deleted",
         target_id: provider.id,
-        target_type: "provider",
+        target_table: "profile",
       });
       toast({ title: "Provider removed" });
     }
