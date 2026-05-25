@@ -32,6 +32,7 @@ export default function AdminUsers() {
   useEffect(() => { fetchUsers(); }, []);
 
   const updateRole = async (userId: string, newRole: string) => {
+    console.log(userId)
     const { error } = await supabase
       .from("profiles")
       .update({ role: newRole as any })
@@ -48,7 +49,7 @@ export default function AdminUsers() {
       target_id: userId,
       target_table: "profiles",
     });
-    console.log(role_error);
+
     toast({ title: "Role updated" });
     fetchUsers();
   };
